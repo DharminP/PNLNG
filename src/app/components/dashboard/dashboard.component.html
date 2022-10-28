@@ -1,0 +1,21 @@
+<div class="container mt-3">
+    <div class="list-group" *ngFor="let i of policies">
+        <div href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Policy Name : {{i.pname}}</h5>
+                <div [ngSwitch]="i.ptype">
+                    <div *ngSwitchDefault>
+                        <span>{{ i.ptype }}</span>
+                    </div>
+                </div>
+            </div>
+            <p class="mb-1">CL : <b>{{ i.pgrade }}</b></p>           
+            <div *ngIf="i.pstatus=='A' else other_content">                
+                <button type="button" class="btn btn-primary" (click)="OnAddcart(i.pid,i.pname)">Add to Cart</button>
+            </div>
+            <ng-template #other_content>
+                <button type="button" class="btn" disabled>Add to Cart</button>
+            </ng-template>            
+        </div>
+    </div>
+</div>

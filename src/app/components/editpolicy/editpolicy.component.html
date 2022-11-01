@@ -1,0 +1,34 @@
+<div class="container mt-3">
+    <h3>Edit Policy</h3>
+    <hr>
+    <form #form="ngForm" (ngSubmit)="OnClickSavePolicy()">
+        <div class="row g-3 align-items-center">
+            <!-- ---------------------------------------------- -->
+            <div class="mb-3">
+                <label class="col-form-label">Policy Name</label>           
+                <input type="text" id="txtpolicyname" name="txtpolicyname" class="form-control w-25"
+                 placeholder="Policy Name" [(ngModel)]="policy.pname">
+            </div>
+            <!-- ---------------------------------------------- -->
+            <div class="mb-3">
+                <label class="col-form-label">Policy Type</label>          
+                <select class="form-control w-25" id="ddlpolicytype"
+                name="ddlpolicytype" required="required"
+                [(ngModel)]="policy.ptype">
+                    <option value="GMC">GMC</option>
+                    <option value="GPA">GPA</option>
+                    <option value="GTL">GTL</option>
+                </select>
+            </div>
+            <!-- ---------------------------------------------- -->
+            <div class="mb-3">
+                <label class="col-form-label">Grade</label>           
+                <input type="number" id="txtgrade" name="txtgrade" class="form-control w-25" placeholder="Grade"
+                [(ngModel)]="policy.pgrade" required="required">
+            </div>
+            <!-- ---------------------------------------------- -->
+            <input type="submit" class="btn btn-warning" style="width: 100px"  value="Save"> &nbsp;
+            <input type="button" class="btn btn-danger" style="width: 100px" routerLink="../../allpolicies" value="Cancel">
+        </div>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+    <h3>Policy Rules</h3>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Grade</th>
+                <th>Status</th>
+                <th class="w-25 p-3">
+                    <input type="button" class="btn btn-success" routerLink="/addnewpolicy" value="Add new">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let policy of policies">
+                <td>{{policy.pid}}</td>
+                <td>{{policy.pname}}</td>
+                <td>{{policy.ptype}}</td>
+                <td>{{policy.pgrade}}</td>
+                <td>{{policy.pstatus}}</td>
+                <td>
+                    <a type="button" class="btn btn-warning" [routerLink]="['/editpolicy',policy.pid]">Edit</a>&nbsp;
+                    <input type="button" class="btn btn-danger" value="Delete" (click)="OnDeleteClick(policy.pid)">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

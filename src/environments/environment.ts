@@ -5,6 +5,7 @@
 export const environment = {
   production: false
   , PnlDomain: "https://localhost:7077"
+  ,DomainAddress: "https://localhost:7210"
 };
 
 /*

@@ -1,0 +1,15 @@
+.isurance-icon {
+  width: -webkit-fill-available;
+  height: 500px;
+  margin: 10px 80px;
+}
+
+.headerBtn {
+  position: absolute;
+  right: 82px;
+  top: 5px;
+  cursor: pointer;
+  background-color: white;
+  border: 0px;
+  color: dimgrey;
+}

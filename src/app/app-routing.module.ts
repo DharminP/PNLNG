@@ -25,7 +25,7 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
     // UnComment to activate login    
-    // canActivate: [KCAuthGuard],
+    canActivate: [KCAuthGuard],
     children: [
       {
         path: "profile",

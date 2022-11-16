@@ -1,16 +1,22 @@
-import { AfterViewInit, Component, DoCheck, OnInit, ViewChild } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-termsconditionspopup',
   templateUrl: './termsconditionspopup.component.html',
   styleUrls: ['./termsconditionspopup.component.css']
 })
-export class TermsconditionspopupComponent implements  AfterViewInit {
+export class TermsconditionspopupComponent implements AfterViewInit {
   @ViewChild('termsconditions') termsconditions: any;
+  
+  constructor(private modalService: NgbModal) { }
 
-  constructor(private modalService: NgbModal) { } 
   ngAfterViewInit(): void {
-    this.modalService.open(this.termsconditions, {centered: true});
+    let ngbModalOptions: NgbModalOptions = {
+      backdrop : 'static',
+      keyboard : false,
+      centered: true
+};
+    this.modalService.open(this.termsconditions, ngbModalOptions);
   }
 }

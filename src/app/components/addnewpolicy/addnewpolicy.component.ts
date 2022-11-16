@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { policy } from 'src/app/models/policy';
 import { PoliciesService } from 'src/app/services/policies-service.service';
 
@@ -16,7 +17,7 @@ export class AddnewpolicyComponent implements OnInit {
     pgrade: 0,
     pstatus: "A",
   }
-  constructor(private policyservice: PoliciesService, private router: Router) { }
+  constructor(private policyservice: PoliciesService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +27,8 @@ export class AddnewpolicyComponent implements OnInit {
     this.policyservice.CreatePolicy(this.policy)
       .subscribe({
         next: () => {
-          alert("Saved Successfully!!!");
+          this.toastr.success("Saved Successfully!!!");
+          //alert("Saved Successfully!!!");
           this.router.navigate(['../../allpolicies']);
         }
       });

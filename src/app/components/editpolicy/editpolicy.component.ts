@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { policy } from 'src/app/models/policy';
 import { PoliciesService } from 'src/app/services/policies-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editpolicy',
@@ -18,7 +19,7 @@ export class EditpolicyComponent implements OnInit {
     pstatus: "A",
   }
 
-  constructor(private policyservice: PoliciesService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private policyservice: PoliciesService, private router: Router, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -40,6 +41,7 @@ export class EditpolicyComponent implements OnInit {
     this.policyservice.UpdatePolicy(this.policy)
     .subscribe({
       next:(Response)=>{
+        this.toastr.success("Updated Successfully.")
         this.router.navigate(['../../allpolicies']);
       }
     })

@@ -17,6 +17,9 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
 import { ApplicationExceptionComponent } from './components/application-exception/application-exception.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpClientModule,
     FormsModule,
     KeycloakAngularModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgbModule
     // AuthModule.forRoot({
     //   config: {
     //     authority: 'http://localhost:8080/auth/realms/Team4_POC',

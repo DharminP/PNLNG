@@ -1,6 +1,7 @@
 <div class="container">
     <h3>Policy Rules</h3>
     <hr>
+<br><br>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -23,9 +24,25 @@
                 <td>{{policy.pstatus}}</td>
                 <td>
                     <a type="button" class="btn btn-warning" [routerLink]="['/editpolicy',policy.pid]">Edit</a>&nbsp;
-                    <input type="button" class="btn btn-danger" value="Delete" (click)="OnDeleteClick(policy.pid)">
+                    <input type="button" class="btn btn-danger" value="Delete" (click)="OnDeleteClick(content,policy.pid)">
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">    
+    <div class="modal-header">    
+        <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>    
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">    
+            <span aria-hidden="true">×</span>    
+        </button>    
+    </div>    
+    <div class="modal-body">    
+        <p>Are you sure to delete this?</p>    
+    </div>    
+    <div class="modal-footer">    
+        <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>    
+        <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>    
+    </div>    
+</ng-template> 

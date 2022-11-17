@@ -17,6 +17,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
 import { ApplicationExceptionComponent } from './components/application-exception/application-exception.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { TermsconditionspopupComponent } from './components/termsconditionspopup/termsconditionspopup.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     EditpolicyComponent,
     LoginComponent,
     HomeComponent,    
-    ApplicationExceptionComponent, ProfileComponent
+    ApplicationExceptionComponent, ProfileComponent, TermsconditionspopupComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpClientModule,
     FormsModule,
     KeycloakAngularModule,
+    NgbModule,
     // AuthModule.forRoot({
     //   config: {
     //     authority: 'http://localhost:8080/auth/realms/Team4_POC',

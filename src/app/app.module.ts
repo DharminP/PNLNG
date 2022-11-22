@@ -19,6 +19,7 @@ import { ApplicationExceptionComponent } from './components/application-exceptio
 import { ProfileComponent } from './components/profile/profile.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { TermsconditionspopupComponent } from './components/termsconditionspopup/termsconditionspopup.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -31,7 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EditpolicyComponent,
     LoginComponent,
     HomeComponent,    
-    ApplicationExceptionComponent, ProfileComponent
+    ApplicationExceptionComponent, ProfileComponent, TermsconditionspopupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 <div class="container mt-3">
+    <input class="form-control" (keyup)="search($event)" type="text" placeholder="Search..">
+    <br>
     <div class="list-group" *ngFor="let i of policies">
         <div href="#" class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex w-100 justify-content-between">
@@ -9,13 +11,14 @@
                     </div>
                 </div>
             </div>
-            <p class="mb-1">CL : <b>{{ i.pgrade }}</b></p>           
-            <div *ngIf="i.pstatus=='A' else other_content">                
+            <p class="mb-1">CL : <b>{{ i.pgrade }}</b></p>
+            <div *ngIf="i.pstatus=='A' else other_content">
                 <button type="button" class="btn btn-primary" (click)="OnAddcart(i.pid,i.pname)">Add to Cart</button>
             </div>
             <ng-template #other_content>
                 <button type="button" class="btn" disabled>Add to Cart</button>
-            </ng-template>            
+            </ng-template>
         </div>
     </div>
+    <div *ngIf="policies.length == 0">No policy found.</div>
 </div>

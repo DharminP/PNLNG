@@ -1,7 +1,8 @@
 <div class="container">
-    <h3>Policy Rules</h3>
+    <h3>Manage Policy </h3>
     <hr>
 <br><br>
+<input class="form-control" style="width: 30em;" (keyup)="policySearch($event)" type="text" placeholder="Search..">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -16,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let policy of policies">
+            <tr *ngFor="let policy of policies" [ngClass]="{selected: policy.pstatus=='Inactive'}">
                 <td>{{policy.pid}}</td>
                 <td>{{policy.pname}}</td>
                 <td>{{policy.ptype}}</td>
@@ -27,6 +28,7 @@
                     <input type="button" class="btn btn-danger" value="Delete" (click)="OnDeleteClick(content,policy.pid)">
                 </td>
             </tr>
+            <tr *ngIf="policies.length == 0">No policy found.</tr>
         </tbody>
     </table>
 </div>

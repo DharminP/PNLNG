@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
     cpname: ''
   }
 
-  constructor(private cartservice: CartService,private router:Router) { }
+  constructor(private cartservice: CartService, private router: Router) { }
   num: number = 0;
   type: string = 'GMC'
   ngOnInit(): void {
@@ -28,17 +28,33 @@ export class DashboardComponent implements OnInit {
         },
       })
   }
-  OnAddcart(cpid: any,cpname:string): void {
+  OnAddcart(cpid: any, cpname: string): void {
     this.cartitem.cpid = parseInt(cpid);
     this.cartitem.cpname = cpname;
     this.cartservice.AddItemInCart(this.cartitem)
       .subscribe({
-        next: (response) => {      
-          if(response.length==0){
+        next: (response) => {
+          if (response.length == 0) {
             alert("This policy is already added in cart");
           }
           this.router.navigate(["../cartroute"]);
         }
       })
+  }
+
+  search(event: any) {
+    debugger;
+    if (event.target.value == "") {
+      this.cartservice.DashboardList()
+        .subscribe({
+          next: (response) => {
+            this.policies = response;
+          },
+        })
+    }
+    else {
+      var data = this.policies;
+      this.policies = data.filter(item => item.pname.toLowerCase().includes(event.target.value.toLowerCase()) || item.ptype.toLowerCase().includes(event.target.value.toLowerCase()) || item.pgrade == event.target.value);
+    }
   }
 }

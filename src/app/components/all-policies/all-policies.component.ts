@@ -2,7 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { policy } from 'src/app/models/policy';
 import { PoliciesService } from 'src/app/services/policies-service.service';
-import { ModalDismissReasons, NgbModal  } from "@ng-bootstrap/ng-bootstrap";
+import { ModalDismissReasons, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 //import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal'
 
 @Component({
@@ -10,9 +10,10 @@ import { ModalDismissReasons, NgbModal  } from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './all-policies.component.html',
   styleUrls: ['./all-policies.component.css']
 })
+
 export class AllPoliciesComponent implements OnInit {
   policies = new Array<policy>;
-  constructor(private policyservice: PoliciesService,private toastr: ToastrService,
+  constructor(private policyservice: PoliciesService, private toastr: ToastrService,
     private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -22,21 +23,37 @@ export class AllPoliciesComponent implements OnInit {
           this.policies = response;
         },
       })
-  } 
- 
-  OnDeleteClick(content : any,pid: any) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {  
-      if (result === 'yes') {  
+  }
+
+  OnDeleteClick(content: any, pid: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      if (result === 'yes') {
         this.policyservice.DeletePolicy(parseInt(pid))
-      .subscribe({
-        next: (response) => {
-          this.policies = response;
-          this.toastr.warning("Deleted Successfully.")
-        }
-      }) 
-      }  
-    }, (reason) => {  
-    });  
+          .subscribe({
+            next: (response) => {
+              this.policies = response;
+              this.toastr.warning("Deleted Successfully.")
+            }
+          })
+      }
+    }, (reason) => {
+    });
+  }
+
+  policySearch(event: any) {
+    debugger;
+    if (event.target.value == "") {
+      this.policyservice.GetAllPolicy()
+        .subscribe({
+          next: (response) => {
+            this.policies = response;
+          },
+        })
+    }
+    else {
+      var data = this.policies;
+      this.policies = data.filter(item => item.pname.toLowerCase().includes(event.target.value.toLowerCase()) || item.ptype.toLowerCase().includes(event.target.value.toLowerCase()) || item.pstatus.toLowerCase().includes(event.target.value.toLowerCase()) || item.pgrade == event.target.value || item.pid == event.target.value);
+    }
   }
 
 }
